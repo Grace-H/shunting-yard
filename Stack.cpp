@@ -1,3 +1,5 @@
+//needs to be char*
+
 #include <iostream>
 #include <cstring>
 #include "Stack.h"
