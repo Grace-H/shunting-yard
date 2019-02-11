@@ -30,14 +30,17 @@ int main(){
   return 0;
 }
 
-//converts char array into Stack, top value is first letter
+//converts char array into Stack, top value is first word
 void charToStack(char* in, Stack* stack){
-  for(int i = strlen(in) - 1; i >= 0; i--){
-    if(is
-    stack->push(in[i]);
+  char* str;
+  str = strtok(in, " ");
+  while(str != NULL){
+    stack->push(str);
+    str = strtok(NULL, " ");
   }
 }
 
+/*
 //uses shunting yard algorithm to convert from infix notation to postfix notation using Stacks
 void inToPost(Stack* infix, Stack* opers, Stack* postifx){
   while(infix->isfull() == 0){
@@ -46,7 +49,7 @@ void inToPost(Stack* infix, Stack* opers, Stack* postifx){
     if(isdigit(data) != 0){
       postfix->push(data);
     }
-    //is */
+    //is 
     else if(data == '*' || data == "/"){
       if(
     //is x/
@@ -56,3 +59,8 @@ void inToPost(Stack* infix, Stack* opers, Stack* postifx){
     //is (
 
     //is )
+*/
+
+//returns true is oper1 is higher precedence that oper2 using Order of Operations
+bool isHigher(char* oper1, char* oper2){
+  

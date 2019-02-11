@@ -14,13 +14,13 @@ using namespace std;
 
 class BiNode {
  public:
-  BiNode(BiNode* newLeft, BiNode* newRight, char newData);
+  BiNode(BiNode* newLeft, BiNode* newRight, char* newData);
   ~BiNode();
   BiNode* getLeft();
   BiNode* getRight();
-  char getData();
+  char* getData();
  private:
-  char data;
+  char* data;
   BiNode* left;
   BiNode* right;
 };

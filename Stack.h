@@ -7,7 +7,7 @@ using namespace std;
 #define STACK_H
 
 struct node{
-  char data;
+  char* data;
   node* next;
 };
   
@@ -15,9 +15,9 @@ class Stack{
  public:
   Stack();             //constructor
   ~Stack();            //destructor
-  int push(char data);  //push value to stack
-  char pop();           //pop value from stack
-  char peek();          //peek at top value
+  int push(char* data);  //push value to stack
+  char* pop();           //pop value from stack
+  char* peek();          //peek at top value
   int isempty();       //check if stack is empty
   int isfull();        //check if stack is full
  private:

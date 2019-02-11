@@ -9,7 +9,7 @@
 
 using namespace std;
 
-BiNode::BiNode(BiNode* newLeft, BiNode* newRight, char newData){
+BiNode::BiNode(BiNode* newLeft, BiNode* newRight, char* newData){
   left = newLeft;
   right = newRight;
   data = newData;
@@ -18,6 +18,7 @@ BiNode::BiNode(BiNode* newLeft, BiNode* newRight, char newData){
 BiNode::~BiNode(){
   delete left;
   delete right;
+  delete data;
 }
 
 BiNode* BiNode::getLeft(){
@@ -28,6 +29,6 @@ BiNode* BiNode::getRight(){
   return right;
 }
 
-char BiNode::getData(){
+char* BiNode::getData(){
   return data;
 }

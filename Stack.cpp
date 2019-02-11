@@ -22,7 +22,7 @@ Stack::~Stack(){
 }
 
 //add node at top of stack
-int Stack::push(char data){
+int Stack::push(char* data){
   node* newnode = new node;
   newnode->next = head;
   newnode->data = data;
@@ -31,8 +31,8 @@ int Stack::push(char data){
 }
 
 //remove first node; return value
-char Stack::pop(){
-  char data = head->data;
+char* Stack::pop(){
+  char* data = head->data;
   node* currenthead = head;
   head = head->next;
   delete currenthead;
@@ -40,13 +40,13 @@ char Stack::pop(){
 }
 
 //return value of top node
-//returns # if top node NULL
-char Stack::peek(){
+//returns NULL if top node NULL
+char* Stack::peek(){
   if(head != NULL){
     return head->data;
   }
   else{
-    return '#';
+    return NULL;
   }
 }
 
