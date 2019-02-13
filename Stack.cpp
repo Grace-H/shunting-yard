@@ -32,6 +32,7 @@ int Stack::push(char* data){
 
 //remove first node; return value
 char* Stack::pop(){
+  cout << head->data << endl;
   char* data = head->data;
   node* currenthead = head;
   head = head->next;
