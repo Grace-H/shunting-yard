@@ -11,6 +11,7 @@ using namespace std;
 
 void charToStack(char* in, Stack* stack);
 void inToPost(Stack* input, Stack* opers, Stack* output);
+bool isHigher(char* oper1, char* oper2);
 
 int main(){
   //stacks for shunting yard
@@ -27,6 +28,7 @@ int main(){
   cout << input->peek() << endl;
   input->pop();
   cout << input->peek() << endl;
+  
   return 0;
 }
 
@@ -40,27 +42,28 @@ void charToStack(char* in, Stack* stack){
   }
 }
 
-/*
 //uses shunting yard algorithm to convert from infix notation to postfix notation using Stacks
 void inToPost(Stack* infix, Stack* opers, Stack* postifx){
-  while(infix->isfull() == 0){
-    char data = infix->pop();
-    //is 1234567890
-    if(isdigit(data) != 0){
-      postfix->push(data);
+  while(infix->isempty()){
+    char* cur = infix->pop();
+    if(strcmp(cur, "(") == 0){
+      opers->push(cur);
     }
-    //is 
-    else if(data == '*' || data == "/"){
-      if(
-    //is x/
-
-    //is ^
-
-    //is (
-
-    //is )
-*/
+    else if(strcmp(cur, "*")
 
 //returns true is oper1 is higher precedence that oper2 using Order of Operations
 bool isHigher(char* oper1, char* oper2){
-  
+  if(strcmp(oper1, oper2) == 0){
+    return false;
+  }
+  else if(strcmp(oper1, "^") == 0){
+    return true;
+  }
+  else if((strcmp(oper1, "*") == 0 || strcmp(oper1, "/") == 0) && (strcmp(oper2, "-") == 0 || strcmp(oper2, "+") == 0)){
+    return true;
+  }
+  else{
+    return false;
+  }
+}
+
