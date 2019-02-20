@@ -1,19 +1,17 @@
-//needs to be char*
-
 #include <iostream>
 #include <cstring>
-#include "Stack.h"
+#include "Tree.h"
 
 using namespace std;
 
 //CONSTRUCTOR
 //initialize head to NULL
-Stack::Stack(){
+Tree::Tree(){
   head = NULL;
 }
 
 //DESTRUCTOR
-Stack::~Stack(){
+Tree::~Tree(){
   while(head != NULL){
     node* currenthead = head;
     head = head->next;
@@ -22,7 +20,7 @@ Stack::~Stack(){
 }
 
 //add node at top of stack
-int Stack::push(char* data){
+int Tree::push(BiNode* data){
   node* newnode = new node;
   newnode->next = head;
   newnode->data = data;
@@ -31,9 +29,9 @@ int Stack::push(char* data){
 }
 
 //remove first node; return value
-char* Stack::pop(){
+BiNode* Tree::pop(){
   //  cout << head->data << endl;
-  char* data = head->data;
+  BiNode* data = head->data;
   node* currenthead = head;
   head = head->next;
   delete currenthead;
@@ -42,7 +40,7 @@ char* Stack::pop(){
 
 //return value of top node
 //returns NULL if top node NULL
-char* Stack::peek(){
+BiNode* Tree::peek(){
   if(head != NULL){
     return head->data;
   }
@@ -52,7 +50,7 @@ char* Stack::peek(){
 }
 
 //return 0 if stack is empty, else 1
-int Stack::isempty(){
+int Tree::isempty(){
   if(head == NULL){
     return 0;
   }
@@ -62,7 +60,7 @@ int Stack::isempty(){
 }
 
 //return 0 if stack is full; else 1
-int Stack::isfull(){
+int Tree::isfull(){
   if(head != NULL){
     return 0;
   }

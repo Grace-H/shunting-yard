@@ -1,0 +1,28 @@
+#include <iostream>
+#include <cstring>
+#include "BiNode.h"
+
+using namespace std;
+
+#ifndef STACK_H
+#define STACK_H
+
+struct node{
+  BiNode* data;
+  BiNode* next;
+};
+
+class Stack{
+ public:
+  Stack();             //constructor
+  ~Stack();            //destructor
+  int push(BiNode* data);  //push value to stack
+  BiNode* pop();           //pop value from stack
+  BiNode* peek();          //peek at top value
+  int isempty();       //check if stack is empty
+  int isfull();        //check if stack is full
+ private:
+  BiNode* head;         //header node of stack
+};
+
+#endif
