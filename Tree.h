@@ -4,12 +4,12 @@
 
 using namespace std;
 
-#ifndef STACK_H
-#define STACK_H
+#ifndef TREE_H
+#define TREE_H
 
-struct node{
+struct treenode{
   BiNode* data;
-  node* next;
+  treenode* next;
 };
 
 class Tree{
@@ -22,7 +22,7 @@ class Tree{
   int isempty();       //check if stack is empty
   int isfull();        //check if stack is full
  private:
-  node* head;         //header node of stack
+  treenode* head;         //header node of stack
 };
 
 #endif

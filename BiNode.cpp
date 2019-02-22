@@ -15,6 +15,12 @@ BiNode::BiNode(BiNode* newLeft, BiNode* newRight, char* newData){
   data = newData;
 }
 
+BiNode::BiNode(char* newData){
+  data = newData;
+  left = NULL;
+  right = NULL;
+}
+
 BiNode::~BiNode(){
   delete left;
   delete right;
@@ -27,6 +33,16 @@ BiNode* BiNode::getLeft(){
 
 BiNode* BiNode::getRight(){
   return right;
+}
+
+int BiNode::setLeft(BiNode* newleft){
+  left = newleft;
+  return 0;
+}
+
+int BiNode::setRight(BiNode* newright){
+  right = newright;
+  return 0;
 }
 
 char* BiNode::getData(){

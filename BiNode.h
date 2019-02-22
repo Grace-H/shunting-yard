@@ -15,9 +15,12 @@ using namespace std;
 class BiNode {
  public:
   BiNode(BiNode* newLeft, BiNode* newRight, char* newData);
+  BiNode(char* newData);
   ~BiNode();
   BiNode* getLeft();
   BiNode* getRight();
+  int setLeft(BiNode* newleft);
+  int setRight(BiNode* newright);
   char* getData();
  private:
   char* data;
