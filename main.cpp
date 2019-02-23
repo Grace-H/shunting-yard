@@ -1,5 +1,8 @@
-//everything needs to be char*
-//need to change stack and binode
+/*Processes entered mathematical expression using shunting-yard algorithm
+ *Creates and traverses binary exression to print to either post- pre- or infix
+ *Author: Grace Hunter
+ *Date: 22 February 2019
+ */
 
 #include <iostream>
 #include <cstring>
@@ -25,7 +28,7 @@ int main(){
   Stack* stack2 = new Stack();
   Stack* opers = new Stack();
 
-
+  //chars for command ID
   char* infix = new char[20];
   char* postfix = new char[20];
   char* prefix = new char[20];
@@ -41,35 +44,34 @@ int main(){
   cin.get(in, 256);
   cin.get();
 
+  //create stack from equation
   charToStack(in, stack1);
   flipStack(stack1, stack2);
-  //  cout << "3: " << stack2->peek() << endl;
-  //while(stack2->isfull() == 0){
-  //cout << "oper: " << stack2->peek() << endl;
-  //stack2->pop();
-  //}
 
+  //convert stack to postfix notation
   inToPost(stack2, opers, stack1);
   //cout << "Made it!" << endl;
-
   flipStack(stack1, stack2);
 
   //make tree
   Tree* tree = new Tree();
   makeTree(tree, stack2); 
 
+  //ask user how ti print out expression
   char* input2 = new char[256];
-  
   bool done = false;
   while(!done){
+    //prompt
     cout << "'infix' 'prefix' 'postfix' 'quit'" << endl;
     cin.get(input2, 256);
     cin.get();
 
+    //all lower case
     for(int i = 0; i < strlen(input2); i++ ){
       input2[i] = tolower(input2[i]);
     }
-
+    
+    //print pre- post- or in- based on input
     if(strcmp(input2, postfix) == 0){
       printPostfix(tree->peek());
       cout << endl;
@@ -83,6 +85,7 @@ int main(){
       cout << endl;
     }
     else if(strcmp(input2, quit) == 0){
+      //exit code & memory
       done = true; 
       delete stack1;
       delete stack2;
@@ -95,9 +98,15 @@ int main(){
       delete [] quit;
     }
   }
-  
   return 0;
 }
+
+//the next three functions, as well as the makeTree and shunting yard algorithm are based on the algoithms found on wikipedia at
+//https://en.wikipedia.org/wiki/Shunting-yard_algorithm
+//https://en.wikipedia.org/wiki/Binary_expression_tree
+
+//traverses a binary expression tree from a given BiNode
+//prints out postfix expression
 void printPostfix(BiNode* node){
   if(node != NULL){
     printPostfix(node->getLeft());
@@ -106,6 +115,8 @@ void printPostfix(BiNode* node){
   }
 }
 
+//traverses a binary expression tree from a given BiNode
+//prints out prefix expression
 void printPrefix(BiNode* node){
   if(node != NULL){
     cout << node->getData();
@@ -114,6 +125,8 @@ void printPrefix(BiNode* node){
   }
 }
 
+//traverses a binary expression tree from a given BiNode
+//prints out infix expression
 void printInfix(BiNode* node){
   if(node != NULL){
     char* cur = node->getData();
@@ -129,10 +142,13 @@ void printInfix(BiNode* node){
   }
 }
 
+//creates a binary expression tree from a stavk containing a postfix expression
 void makeTree(Tree* tree, Stack* in){
   while(in->isempty() != 0){
+    //get top node value
     char* cur = in->pop();
     BiNode* node = new BiNode(cur);
+    //create a new tree with "legs" if it is an operator
     if(strcmp(cur, "*") == 0 || strcmp(cur, "/") == 0 || strcmp(cur, "+") == 0 || strcmp(cur, "-") == 0 || strcmp(cur, "^") == 0){
       BiNode* right = tree->pop();
       BiNode* left = tree->pop();
@@ -140,12 +156,14 @@ void makeTree(Tree* tree, Stack* in){
       node->setLeft(left);
       tree->push(node);
     }
+    //otherwise just add to stack
     else{
       tree->push(node);
     }
   }
 }
 
+//takes contents of stack in and transfers them to stack out, with first out of in as first in out
 //make sure stacks are empty
 void flipStack(Stack* in, Stack* out){
   while(in->isempty() != 0){
@@ -207,9 +225,7 @@ void inToPost(Stack* infix, Stack* opers, Stack* postfix){
 	//cout << "yay" << endl;
 	//cout << opers->isempty() << endl;
 	//cout << "new top: " << opers->peek() << endl;
-      }
-
-      
+      }      
       opers->pop();
     }
     //is a number

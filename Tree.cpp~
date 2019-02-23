@@ -13,7 +13,7 @@ Tree::Tree(){
 //DESTRUCTOR
 Tree::~Tree(){
   while(head != NULL){
-    BiNode* currenthead = head;
+    treenode* currenthead = head;
     head = head->next;
     delete currenthead;
   }
@@ -21,7 +21,7 @@ Tree::~Tree(){
 
 //add node at top of stack
 int Tree::push(BiNode* data){
-  BiNode* newnode = new node;
+  treenode* newnode = new treenode;
   newnode->next = head;
   newnode->data = data;
   head = newnode;
@@ -32,7 +32,7 @@ int Tree::push(BiNode* data){
 BiNode* Tree::pop(){
   //  cout << head->data << endl;
   BiNode* data = head->data;
-  BiNode* currenthead = head;
+  treenode* currenthead = head;
   head = head->next;
   delete currenthead;
   return data;

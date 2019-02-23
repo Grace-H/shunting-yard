@@ -1,3 +1,5 @@
+//needs to be char*
+
 #include <iostream>
 #include <cstring>
 #include "Stack.h"
@@ -30,6 +32,7 @@ int Stack::push(char* data){
 
 //remove first node; return value
 char* Stack::pop(){
+  //  cout << head->data << endl;
   char* data = head->data;
   node* currenthead = head;
   head = head->next;
@@ -38,7 +41,7 @@ char* Stack::pop(){
 }
 
 //return value of top node
-//returns -1 if top node NULL
+//returns NULL if top node NULL
 char* Stack::peek(){
   if(head != NULL){
     return head->data;

@@ -1,3 +1,8 @@
+/*Header file for class Tree
+ *Author: Grace Hunter
+ *Date: 22 February 2019
+ */
+
 #include <iostream>
 #include <cstring>
 #include "BiNode.h"

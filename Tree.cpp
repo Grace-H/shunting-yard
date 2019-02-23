@@ -1,3 +1,8 @@
+//Class Tree
+//uses node struct and linked list to manage stack of BiNode
+//Author: Grace Hunter
+//Date: 22 Febraury
+
 #include <iostream>
 #include <cstring>
 #include "Tree.h"

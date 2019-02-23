@@ -1,8 +1,3 @@
-/*Header file for class Stack
- *Author: Grace Hunter
- *Date: 22 February 2019
- */
-
 #include <iostream>
 #include <cstring>
 

@@ -4,25 +4,25 @@
 
 using namespace std;
 
-#ifndef STACK_H
-#define STACK_H
+#ifndef TREE_H
+#define TREE_H
 
-struct node{
+struct treenode{
   BiNode* data;
-  BiNode* next;
+  treenode* next;
 };
 
-class Stack{
+class Tree{
  public:
-  Stack();             //constructor
-  ~Stack();            //destructor
+  Tree();             //constructor
+  ~Tree();            //destructor
   int push(BiNode* data);  //push value to stack
   BiNode* pop();           //pop value from stack
   BiNode* peek();          //peek at top value
   int isempty();       //check if stack is empty
   int isfull();        //check if stack is full
  private:
-  BiNode* head;         //header node of stack
+  treenode* head;         //header node of stack
 };
 
 #endif

@@ -1,4 +1,8 @@
-//needs to be char*
+//Class Stack
+//uses node struct and linked list to manage stack of char*
+//Author: Grace Hunter
+//Date: 22 Febraury
+
 
 #include <iostream>
 #include <cstring>
